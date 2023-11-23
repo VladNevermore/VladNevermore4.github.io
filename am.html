@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анонимный мессенджер</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Анонимный мессенджер</h1>
+        <button onclick="createRoom()">Создать комнату</button>
+        <button onclick="joinRoom()">Присоединиться к комнате</button>
+        <div id="roomContainer" style="display:none;">
+            <p>Пароль для вашей комнаты: <span id="roomPassword"></span></p>
+            <input type="text" id="joinPassword" placeholder="Введите пароль">
+            <button onclick="enterRoom()">Войти в комнату</button>
+        </div>
+    </div>
+
+    <script>
+        function createRoom() {
+            document.getElementById("roomContainer").style.display = "block";
+            var password = generateRandomPassword();
+            document.getElementById("roomPassword").innerText = password;
+        }
+
+        function joinRoom() {
+            document.getElementById("roomContainer").style.display = "block";
+        }
+
+        function enterRoom() {
+            var enteredPassword = document.getElementById("joinPassword").value;
+            // Проверка пароля и выполнение действий по присоединению к комнате
+            // ...
+        }
+
+        function generateRandomPassword() {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var password = "";
+            for (var i = 0; i < 6; i++) {
+                password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return password;
+        }
+    </script>
+</body>
+</html>
